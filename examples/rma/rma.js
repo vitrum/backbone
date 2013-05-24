@@ -73,7 +73,7 @@ $(function(){
   var TodoView = Backbone.View.extend({
 
     //... is a list tag.
-    tagName:  "li",
+    tagName:  "tr",
 
     // Cache the template function for a single item.
     template: _.template($('#item-template').html()),
@@ -155,7 +155,8 @@ $(function(){
       "keypress #new-todo":  "createOnEnter",
       "click #clear-completed": "clearCompleted",
       "click #toggle-all": "toggleAllComplete",
-      "click #hide-completed": "toggleShowComplete"
+      "click #hide-completed": "toggleShowComplete",
+      "click #exportcsv": "exportcsv"
     },
 
     // At initialization we bind to the relevant events on the `Todos`
@@ -231,6 +232,13 @@ $(function(){
       $(".done").toggle();
       //var done = this.allCheckbox.checked;
       //Todos.each(function (todo) { todo.save({'done': done}); });
+    },
+    exportcsv: function () {
+      $('#todo-list').table2CSV({
+        header:['bug id','status']
+      });
+      //var csv_value=$('#todo-list').table2CSV({delivery:'value',header:['bug id']});
+      //alert(jQuery.trim(csv_value));
     }
 
   });

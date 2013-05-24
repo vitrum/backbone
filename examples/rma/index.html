@@ -12,7 +12,7 @@
   <div id="todoapp">
 
     <header>
-      <h1>HTML5 test</h1>
+      <h1>GLS HTML5 Bug List</h1>
       <input id="new-todo" type="text" placeholder="What is the new BUG's id?">
     </header>
 
@@ -21,7 +21,8 @@
       <label for="toggle-all">Mark all as complete</label>
       <input id="hide-completed" type="checkbox">
       <label for="hide-completed">hide completed</label>
-      <ul id="todo-list"></ul>
+      <button id="exportcsv">Export as CSV</button>
+      <table id="todo-list"></table>
     </section>
 
     <footer>
@@ -43,6 +44,7 @@
 
   <script src="../../test/vendor/json2.js"></script>
   <script src="../../test/vendor/jquery.js"></script>
+  <script src="jQuery.table2CSV.js"></script>
   <script src="../../test/vendor/underscore.js"></script>
   <script src="../../backbone.js"></script>
   <script src="../backbone.localStorage.js"></script>
@@ -51,12 +53,22 @@
   <!-- Templates -->
 
   <script type="text/template" id="item-template">
-    <div class="view">
-      <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
-      <label><%- title %></label>
-      <a class="destroy"></a>
-    </div>
-    <input class="edit" type="text" value="<%- title %>" />
+    <td class="bugid">
+      <div class="view">
+        <input class="toggle" type="checkbox" <%= done ? 'checked="checked"' : '' %> />
+        <label><%- title %></label>
+        <a class="destroy"></a>
+      </div>
+      <input class="edit" type="text" value="<%- title %>" />
+    </td>
+    <td class="bugstatus">
+        <% if (done ==true) { %>
+        <em class>finish</em>
+        <% } %>
+        <% if (done ==false) { %>
+        <em class>open</em>
+        <% } %>
+    </td>
   </script>
 
   <script type="text/template" id="stats-template">

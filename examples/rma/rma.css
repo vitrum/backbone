@@ -65,20 +65,22 @@ body {
 	margin: 10px 0;
 	padding: 0;
 	list-style: none;
+	width: 100%;
 }
 
-#todo-list li {
-	padding: 18px 20px 18px 0;
+#todo-list tr {
+	padding: 1px 20px 1px 0;
 	position: relative;
-	font-size: 24px;
-	border-bottom: 1px solid #cccccc;
-}
+	font-size: 16px;
 
-#todo-list li:last-child {
+}
+#todo-list td { width: 490px; display: inline-block; float: left; position: relative;border-bottom: 1px solid #cccccc;}
+#todo-list td.bugstatus { width: 0px; height: 0px; overflow: hidden;}
+#todo-list tr:last-child {
 	border-bottom: none;
 }
 
-#todo-list li.done label {
+#todo-list tr.done label {
 	color: #777777;
 	text-decoration: line-through;
 }
@@ -86,7 +88,7 @@ body {
 #todo-list .destroy {
 	position: absolute;
 	right: 5px;
-	top: 20px;
+	top: 1px;
 	display: none;
 	cursor: pointer;
 	width: 20px;
@@ -94,7 +96,7 @@ body {
 	background: url(destroy.png) no-repeat;
 }
 
-#todo-list li:hover .destroy {
+#todo-list td:hover .destroy {
   	display: block;
 }
 
@@ -102,32 +104,32 @@ body {
   	background-position: 0 -20px;
 }
 
-#todo-list li.editing {
+#todo-list tr.editing {
 	border-bottom: none;
 	margin-top: -1px;
 	padding: 0;
 }
 
-#todo-list li.editing:last-child {
+#todo-list tr.editing:last-child {
 	margin-bottom: -1px;
 }
 
-#todo-list li.editing .edit {
+#todo-list tr.editing .edit {
 	display: block;
 	width: 444px;
 	padding: 13px 15px 14px 20px;
 	margin: 0;
 }
 
-#todo-list li.editing .view {
+#todo-list tr.editing .view {
 	display: none;
 }
 
-#todo-list li .view label {
+#todo-list tr .view label {
 	word-break: break-word;
 }
 
-#todo-list li .edit {
+#todo-list tr .edit {
 	display: none;
 }
 
